@@ -17,7 +17,6 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
@@ -29,85 +28,110 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QWidget *horizontalLayoutWidget;
-    QHBoxLayout *horizontalLayout;
-    QVBoxLayout *verticalLayout_3;
+    QWidget *app;
+    QVBoxLayout *verticalLayout_2;
     QLabel *label_3;
     QLineEdit *lineEdit;
+    QHBoxLayout *horizontalLayout;
+    QVBoxLayout *text_output;
     QLabel *label_2;
     QTextEdit *textEdit;
-    QSpacerItem *horizontalSpacer;
+    QWidget *buttons;
     QVBoxLayout *verticalLayout;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QMenuBar *menubar;
+    QPushButton *pushButton_bold;
+    QPushButton *pushButton_del;
     QStatusBar *statusbar;
+    QMenuBar *menubar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(800, 600);
+        MainWindow->resize(608, 552);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        horizontalLayoutWidget = new QWidget(centralwidget);
-        horizontalLayoutWidget->setObjectName("horizontalLayoutWidget");
-        horizontalLayoutWidget->setGeometry(QRect(180, 120, 411, 301));
-        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
-        horizontalLayout->setObjectName("horizontalLayout");
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        verticalLayout_3 = new QVBoxLayout();
-        verticalLayout_3->setObjectName("verticalLayout_3");
-        label_3 = new QLabel(horizontalLayoutWidget);
+        app = new QWidget(centralwidget);
+        app->setObjectName("app");
+        app->setGeometry(QRect(110, 122, 361, 298));
+        app->setStyleSheet(QString::fromUtf8("background-color: #b3b3b3;\n"
+"border: 2px solid black;"));
+        verticalLayout_2 = new QVBoxLayout(app);
+        verticalLayout_2->setObjectName("verticalLayout_2");
+        label_3 = new QLabel(app);
         label_3->setObjectName("label_3");
+        label_3->setStyleSheet(QString::fromUtf8("font-size: 25px;\n"
+"border: none;"));
 
-        verticalLayout_3->addWidget(label_3);
+        verticalLayout_2->addWidget(label_3);
 
-        lineEdit = new QLineEdit(horizontalLayoutWidget);
+        lineEdit = new QLineEdit(app);
         lineEdit->setObjectName("lineEdit");
+        lineEdit->setMinimumSize(QSize(0, 30));
+        lineEdit->setStyleSheet(QString::fromUtf8("border: 2px solid black;\n"
+"background-color: white;"));
 
-        verticalLayout_3->addWidget(lineEdit);
+        verticalLayout_2->addWidget(lineEdit);
 
-        label_2 = new QLabel(horizontalLayoutWidget);
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName("horizontalLayout");
+        text_output = new QVBoxLayout();
+        text_output->setObjectName("text_output");
+        label_2 = new QLabel(app);
         label_2->setObjectName("label_2");
+        label_2->setStyleSheet(QString::fromUtf8("font-size: 25px;\n"
+"border: none;"));
 
-        verticalLayout_3->addWidget(label_2);
+        text_output->addWidget(label_2);
 
-        textEdit = new QTextEdit(horizontalLayoutWidget);
+        textEdit = new QTextEdit(app);
         textEdit->setObjectName("textEdit");
+        textEdit->setStyleSheet(QString::fromUtf8("border: 2px solid black;\n"
+"background-color: white;"));
 
-        verticalLayout_3->addWidget(textEdit);
+        text_output->addWidget(textEdit);
 
 
-        horizontalLayout->addLayout(verticalLayout_3);
+        horizontalLayout->addLayout(text_output);
 
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer);
-
-        verticalLayout = new QVBoxLayout();
+        buttons = new QWidget(app);
+        buttons->setObjectName("buttons");
+        buttons->setEnabled(true);
+        buttons->setMaximumSize(QSize(150, 16777215));
+        buttons->setStyleSheet(QString::fromUtf8("font-size: 30px;\n"
+"font-weight: bold;\n"
+"border: none;"));
+        verticalLayout = new QVBoxLayout(buttons);
         verticalLayout->setObjectName("verticalLayout");
-        pushButton = new QPushButton(horizontalLayoutWidget);
-        pushButton->setObjectName("pushButton");
+        pushButton_bold = new QPushButton(buttons);
+        pushButton_bold->setObjectName("pushButton_bold");
+        pushButton_bold->setMinimumSize(QSize(0, 0));
+        pushButton_bold->setStyleSheet(QString::fromUtf8("border: 2px solid black;\n"
+"background-color: blue;"));
 
-        verticalLayout->addWidget(pushButton);
+        verticalLayout->addWidget(pushButton_bold);
 
-        pushButton_2 = new QPushButton(horizontalLayoutWidget);
-        pushButton_2->setObjectName("pushButton_2");
+        pushButton_del = new QPushButton(buttons);
+        pushButton_del->setObjectName("pushButton_del");
+        pushButton_del->setMinimumSize(QSize(70, 0));
+        pushButton_del->setStyleSheet(QString::fromUtf8("border: 2px solid black;\n"
+"background-color: red;"));
 
-        verticalLayout->addWidget(pushButton_2);
+        verticalLayout->addWidget(pushButton_del);
 
 
-        horizontalLayout->addLayout(verticalLayout);
+        horizontalLayout->addWidget(buttons);
+
+
+        verticalLayout_2->addLayout(horizontalLayout);
 
         MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 25));
-        MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
+        menubar = new QMenuBar(MainWindow);
+        menubar->setObjectName("menubar");
+        menubar->setGeometry(QRect(0, 0, 608, 26));
+        MainWindow->setMenuBar(menubar);
 
         retranslateUi(MainWindow);
 
@@ -119,8 +143,8 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "\320\222\320\262\320\265\320\264\320\270\321\202\320\265 \321\202\320\265\320\272\321\201\321\202:", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "\320\222\320\260\321\210 \321\202\320\265\320\272\321\201\321\202:", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "\320\226\320\270\321\200\320\275\321\213\320\271 \321\202\320\265\320\272\321\201\321\202", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "\320\236\321\207\320\270\321\201\321\202\320\270\321\202\321\214 \320\277\320\276\320\273\320\265", nullptr));
+        pushButton_bold->setText(QCoreApplication::translate("MainWindow", "\320\226", nullptr));
+        pushButton_del->setText(QCoreApplication::translate("MainWindow", "DEL", nullptr));
     } // retranslateUi
 
 };
