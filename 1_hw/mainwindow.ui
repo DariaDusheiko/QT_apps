@@ -96,6 +96,17 @@ border: none;</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="styleSheet">
+             <string notr="true">border: 2px solid black;
+background-color: white;</string>
+            </property>
+            <property name="text">
+             <string>ЦВЕТ</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QPushButton" name="pushButton_bold">
             <property name="minimumSize">
              <size>
@@ -125,7 +136,7 @@ background-color: blue;</string>
 background-color: red;</string>
             </property>
             <property name="text">
-             <string>DEL</string>
+             <string>Х</string>
             </property>
            </widget>
           </item>

@@ -38,6 +38,7 @@ public:
     QTextEdit *textEdit;
     QWidget *buttons;
     QVBoxLayout *verticalLayout;
+    QPushButton *pushButton;
     QPushButton *pushButton_bold;
     QPushButton *pushButton_del;
     QStatusBar *statusbar;
@@ -102,6 +103,13 @@ public:
 "border: none;"));
         verticalLayout = new QVBoxLayout(buttons);
         verticalLayout->setObjectName("verticalLayout");
+        pushButton = new QPushButton(buttons);
+        pushButton->setObjectName("pushButton");
+        pushButton->setStyleSheet(QString::fromUtf8("border: 2px solid black;\n"
+"background-color: white;"));
+
+        verticalLayout->addWidget(pushButton);
+
         pushButton_bold = new QPushButton(buttons);
         pushButton_bold->setObjectName("pushButton_bold");
         pushButton_bold->setMinimumSize(QSize(0, 0));
@@ -143,8 +151,9 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "\320\222\320\262\320\265\320\264\320\270\321\202\320\265 \321\202\320\265\320\272\321\201\321\202:", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "\320\222\320\260\321\210 \321\202\320\265\320\272\321\201\321\202:", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "\320\246\320\222\320\225\320\242", nullptr));
         pushButton_bold->setText(QCoreApplication::translate("MainWindow", "\320\226", nullptr));
-        pushButton_del->setText(QCoreApplication::translate("MainWindow", "DEL", nullptr));
+        pushButton_del->setText(QCoreApplication::translate("MainWindow", "\320\245", nullptr));
     } // retranslateUi
 
 };

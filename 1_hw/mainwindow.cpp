@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+    #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    color_index = 2;
 }
 
 MainWindow::~MainWindow()
@@ -45,5 +46,16 @@ void MainWindow::on_lineEdit_editingFinished()
     }
 
     ui->lineEdit->clear();
+}
+
+
+void MainWindow::on_pushButton_clicked()
+{
+    color_index = (color_index + 1) % 3;
+    //qDebug() << color_index;
+    //qDebug() << colors[color_index];
+    QString style = "QTextEdit { border: 2px solid black; background-color: white; color: " + colors[color_index] + "; }";
+    //qDebug() << style;
+    ui->textEdit->setStyleSheet(style);
 }
 
